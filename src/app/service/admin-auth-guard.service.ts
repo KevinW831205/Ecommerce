@@ -1,7 +1,9 @@
 import { Injectable } from '@angular/core';
 import { CanActivate } from '@angular/router';
 import { AuthService } from './auth.service';
-import { map } from 'rxjs/operators';
+import { switchMap } from 'rxjs/operators';
+import { UserService } from './user.service';
+import { Observable } from 'rxjs';
 
 
 @Injectable({
@@ -9,12 +11,13 @@ import { map } from 'rxjs/operators';
 })
 export class AdminAuthGuard implements CanActivate {
 
-  constructor(private auth: AuthService) { }
+  constructor(private auth: AuthService, private userService: UserService) { }
 
-  canActivate() {
-    this.auth.user$.pipe(map(user => {
-
+  canActivate() : Observable<boolean> {
+    this.auth.user$.pipe(switchMap(user => {
+      return this.userService.get(user.uid);
     }))
+      .subscribe(x => );
 
   }
 }
