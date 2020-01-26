@@ -9,18 +9,19 @@ import { LoginComponent } from './login/login.component';
 import { AdminOrdersComponent } from './admin/admin-orders/admin-orders.component';
 import { AdminProductsComponent } from './admin/admin-products/admin-products.component';
 import { MyOrdersComponent } from './my-orders/my-orders.component';
+import { AuthGuard } from './service/auth-guard.service';
 
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
   { path: 'products', component: ProductsComponent },
   { path: 'shopping-cart', component: ShoppingCartComponent },
-  { path: 'check-out', component: CheckOutComponent },
-  { path: 'order-success', component: OrderSuccessComponent },
   { path: 'login', component: LoginComponent },
-  { path: 'admin/products', component: AdminProductsComponent },
-  { path: 'admin/orders', component: AdminOrdersComponent },
-  { path: 'my/orders', component: MyOrdersComponent}
+  { path: 'check-out', component: CheckOutComponent, canActivate: [AuthGuard] },
+  { path: 'order-success', component: OrderSuccessComponent, canActivate: [AuthGuard] },
+  { path: 'admin/products', component: AdminProductsComponent, canActivate: [AuthGuard] },
+  { path: 'admin/orders', component: AdminOrdersComponent,canActivate: [AuthGuard] },
+  { path: 'my/orders', component: MyOrdersComponent,canActivate: [AuthGuard] }
 ];
 
 @NgModule({
