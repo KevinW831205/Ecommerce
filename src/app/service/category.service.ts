@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { AngularFireDatabase } from 'angularfire2/database';
 import { map } from "rxjs/operators"
+import { Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -18,7 +19,7 @@ export class CategoryService {
       }
     }
   */
-  getCategories() {
+  getCategories(): Observable<any> {
     return this.db.list('/categories').snapshotChanges()
       .pipe(
         map(category => {
