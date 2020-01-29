@@ -15,7 +15,7 @@ export class LoginComponent{
   ngOnInit() {
   }
 
-  login() {
+login() {
     this.auth.login();
   }
 

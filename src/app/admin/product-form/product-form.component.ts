@@ -27,7 +27,7 @@ export class ProductFormComponent implements OnInit {
     if (this.id) {
       // this.productService.get(id)
       // .subscribe(p=> this.product = p);
-      this.productService.get(this.id).subscribe(res => {
+      this.productService.get(this.id).pipe(take(1)).subscribe(res => {
         this.product = res;
       });
     }

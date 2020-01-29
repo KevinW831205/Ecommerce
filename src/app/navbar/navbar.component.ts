@@ -13,7 +13,7 @@ import { AppUser } from '../models/AppUser';
 export class NavbarComponent {
   appUser: AppUser
   constructor(private auth: AuthService) {
-    auth.appUser$.subscribe(appUser => this.appUser = appUser)
+    auth.appUser$.subscribe(appUser => this.appUser = appUser);
   }
 
   logout() {
