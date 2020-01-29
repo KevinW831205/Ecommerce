@@ -16,9 +16,6 @@ export class AdminProductsComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.products$.subscribe(res=>{
-      console.log(res);
-    })
   }
 
 }

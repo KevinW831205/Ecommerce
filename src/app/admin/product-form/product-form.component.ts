@@ -12,22 +12,31 @@ import { take } from 'rxjs/operators';
 export class ProductFormComponent implements OnInit {
 
   categories$;
-  product;
+  product: any = {
+    data: {
+      title: "",
+      price:"",
+      imageUrl:"",
+      category:""
+    }
+  };
   constructor(categoryService: CategoryService, private productService: ProductService, private router: Router, private route: ActivatedRoute) {
-    this.categories$ = categoryService.getCategories(); 
+    this.categories$ = categoryService.getCategories();
     let id = this.route.snapshot.paramMap.get('id');
-    if(id){
+    if (id) {
       // this.productService.get(id)
-        // .subscribe(p=> this.product = p);
-        this.productService.get(id).subscribe(res=>console.log(res));
+      // .subscribe(p=> this.product = p);
+      this.productService.get(id).subscribe(res => {
+        this.product = res;
+      });
     }
   }
 
-  ngOnInit() { 
-    console.log(this.product)
-   }
+  ngOnInit() {
+  }
 
-  save(product){
+
+  save(product) {
     this.productService.create(product);
     this.router.navigate(['/admin/products'])
   }
