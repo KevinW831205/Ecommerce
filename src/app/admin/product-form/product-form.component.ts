@@ -34,7 +34,6 @@ export class ProductFormComponent implements OnInit {
   }
 
   ngOnInit() {
-    console.log(this.id)
   }
 
 
