@@ -14,11 +14,6 @@ export class ProductFormComponent implements OnInit {
     this.categories$ = categoryService.getCategories();
   }
 
-  ngOnInit() {
-    this.categories$.subscribe(res=>{
-      console.log(res)
-    })
-
-  }
+  ngOnInit() {  }
 
 }
