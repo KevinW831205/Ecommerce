@@ -1,4 +1,4 @@
-<form #productFrom="ngForm" (ngSubmit)="save(productForm.value)">
+<form #productForm="ngForm" (ngSubmit)="save(productForm.value)">
     <div class="form-group">
         <label for="title">Title</label>
         <input ngModel name="title" id="title" type="text" class="form-control">

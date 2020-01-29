@@ -16,4 +16,10 @@ export class ProductFormComponent implements OnInit {
 
   ngOnInit() {  }
 
+  save(product){
+    console.log(product);
+  }
+
+
+
 }
