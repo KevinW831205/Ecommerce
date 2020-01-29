@@ -15,29 +15,35 @@ export class ProductFormComponent implements OnInit {
   product: any = {
     data: {
       title: "",
-      price:"",
-      imageUrl:"",
-      category:""
+      price: "",
+      imageUrl: "",
+      category: ""
     }
   };
+  id;
   constructor(categoryService: CategoryService, private productService: ProductService, private router: Router, private route: ActivatedRoute) {
     this.categories$ = categoryService.getCategories();
-    let id = this.route.snapshot.paramMap.get('id');
-    if (id) {
+    this.id = this.route.snapshot.paramMap.get('id');
+    if (this.id) {
       // this.productService.get(id)
       // .subscribe(p=> this.product = p);
-      this.productService.get(id).subscribe(res => {
+      this.productService.get(this.id).subscribe(res => {
         this.product = res;
       });
     }
   }
 
   ngOnInit() {
+    console.log(this.id)
   }
 
 
   save(product) {
-    this.productService.create(product);
+    if (this.id) {
+      this.productService.update(this.id,product);
+    } else {
+      this.productService.create(product);
+    }
     this.router.navigate(['/admin/products'])
   }
 

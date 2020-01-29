@@ -24,13 +24,12 @@ export class ProductService {
   }
 
   get(productId) {
-    console.log(productId)
     return this.db.object('/products/' + productId).snapshotChanges()
       .pipe(
         map(product => {
           const key = product.payload.key;
           const data = product.payload.val();
-          return {key,data}
+          return { key, data }
         })
       );
   }
@@ -38,5 +37,9 @@ export class ProductService {
 
   create(product) {
     return this.db.list('/products').push(product);
+  }
+
+  update(productId, product){
+    this.db.object('/products/'+productId).update(product);
   }
 }
