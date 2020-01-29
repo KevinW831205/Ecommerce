@@ -1,8 +1,8 @@
 export class Product {
-    title;
-    price;
-    imageUrl;
-    category
+    title:string;
+    price:number;
+    imageUrl:string;
+    category:string;
 
     constructor(title, price, imageUrl, category) {
         this.title = title;
