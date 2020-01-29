@@ -12,7 +12,7 @@
     <tbody>
         <tr *ngFor="let p of products$ | async">
             <td>{{p.data.title}}</td>
-            <td>{{p.data.price | currency:'USD':true}}</td>
+            <td>{{p.data.price | currency:'USD':symbol}}</td>
             <td>
                 <a [routerLink]="['/admin/products/',p.key]">Edit</a>
             </td>
