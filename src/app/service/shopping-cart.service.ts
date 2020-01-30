@@ -18,14 +18,17 @@ export class ShoppingCartService {
     return this.db.object('/shopping-carts/' + cartId);
   }
 
-  private getOrCreateCart() {
+  private async getOrCreateCart() {
     let cartId = localStorage.getItem('cartId');
     if (!cartId) {
-      this.create().then(
-        result => {
-          localStorage.setItem('cartId', result.key)
-          return this.getCart(result.key);
-        });
+      let result = await this.create();
+      localStorage.setItem('cartId', result.key)
+      return this.getCart(result.key);
+      // this.create().then(
+      //   result => {
+      // localStorage.setItem('cartId', result.key)
+      // return this.getCart(result.key);
+      //   });
     } else {
       return this.getCart(cartId);
     }
