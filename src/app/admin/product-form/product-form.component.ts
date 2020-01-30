@@ -3,6 +3,8 @@ import { CategoryService } from 'src/app/service/category.service';
 import { ProductService } from 'src/app/service/product.service';
 import { Router, ActivatedRoute } from '@angular/router';
 import { take } from 'rxjs/operators';
+import { Product } from 'src/app/models/Product';
+import { FirebaseData } from 'src/app/models/FirebaseData';
 
 @Component({
   selector: 'app-product-form',
@@ -12,14 +14,15 @@ import { take } from 'rxjs/operators';
 export class ProductFormComponent implements OnInit {
 
   categories$;
-  product: any = {
-    data: {
-      title: "",
-      price: "",
-      imageUrl: "",
-      category: ""
-    }
-  };
+  product: FirebaseData<Product>;
+  // product: any = {
+  //   data: {
+  //     title: "",
+  //     price: "",
+  //     imageUrl: "",
+  //     category: ""
+  //   }
+  // };
   id;
   constructor(categoryService: CategoryService, private productService: ProductService, private router: Router, private route: ActivatedRoute) {
     this.categories$ = categoryService.getCategories();
