@@ -55,4 +55,16 @@ export class ShoppingCartService {
       }
     })
   }
+
+  async removeFromCart(product: FirebaseData<Product>) {
+    let cartId = await this.getOrCreateCartId();
+    let item$ = this.getItem(cartId, product.key);
+    item$.snapshotChanges().pipe(
+      take(1)
+    ).subscribe(item => {
+      if (item.payload.val().quantity>0) {
+        item$.update({ quantity: item.payload.val().quantity - 1 })
+      }
+    })
+  }
 }

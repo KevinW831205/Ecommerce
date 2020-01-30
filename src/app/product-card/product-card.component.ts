@@ -15,16 +15,20 @@ export class ProductCardComponent {
 
   constructor(private shoppingCartService: ShoppingCartService) { }
 
-  addToCart(product: FirebaseData<Product>) {
-    this.shoppingCartService.addToCart(product);
+  addToCart() {
+    this.shoppingCartService.addToCart(this.product);
   }
 
-  getQuantity(){
-    if(!this.shoppingCart){
+  getQuantity() {
+    if (!this.shoppingCart) {
       return 0;
     }
-    let item =  this.shoppingCart.items[this.product.key];
-    return item ? item.quantity: 0;
+    let item = this.shoppingCart.items[this.product.key];
+    return item ? item.quantity : 0;
+  }
+
+  removeFromCart() {
+    this.shoppingCartService.removeFromCart(this.product)
   }
 
 }
