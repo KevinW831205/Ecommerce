@@ -21,17 +21,16 @@ export class ProductsComponent {
       .subscribe(
         products => {
           this.products = products;
-          this.filteredProducts =products;
+          route.queryParamMap.subscribe(params => {
+            this.category = params.get('category');
+            this.filteredProducts = this.category ?
+              this.products.filter(p => p.data.category === this.category) :
+              this.products
+          })
         }
       );
     this.categories$ = categoryService.getAll();
 
-    route.queryParamMap.subscribe(params => {
-      this.category = params.get('category');
-      this.filteredProducts = this.category ?
-        this.products.filter(p => p.data.category === this.category) :
-        this.products
-    })
   }
 
 
