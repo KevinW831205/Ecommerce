@@ -7,7 +7,8 @@ import { Component, OnInit, Input } from '@angular/core';
 })
 export class ProductCardComponent{
   
-  @Input('product') product;
+  @Input('product') product=null;
+  @Input('show-actions') showActions =false;
 
   constructor() { }
 
