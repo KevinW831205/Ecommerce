@@ -27,6 +27,7 @@ import { ProductFormComponent } from './admin/product-form/product-form.componen
 import { CategoryService } from './service/category.service';
 import { FormsModule } from '@angular/forms';
 import { ProductService } from './service/product.service';
+import { ProductFilterComponent } from './product-filter/product-filter.component';
 
 @NgModule({
   declarations: [
@@ -41,7 +42,8 @@ import { ProductService } from './service/product.service';
     AdminProductsComponent,
     AdminOrdersComponent,
     LoginComponent,
-    ProductFormComponent
+    ProductFormComponent,
+    ProductFilterComponent
   ],
   imports: [
     BrowserModule,
