@@ -29,6 +29,7 @@ import { FormsModule } from '@angular/forms';
 import { ProductService } from './service/product.service';
 import { ProductFilterComponent } from './product-filter/product-filter.component';
 import { ProductCardComponent } from './product-card/product-card.component';
+import { ShoppingCartService } from './service/shopping-cart.service';
 
 @NgModule({
   declarations: [
@@ -63,7 +64,8 @@ import { ProductCardComponent } from './product-card/product-card.component';
     UserService,
     AdminAuthGuard,
     CategoryService,
-    ProductService
+    ProductService,
+    ShoppingCartService
   ],
   bootstrap: [AppComponent]
 })
