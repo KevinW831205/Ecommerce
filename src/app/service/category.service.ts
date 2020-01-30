@@ -19,14 +19,14 @@ export class CategoryService {
       }
     }
   */
-  getCategories(): Observable<any> {
+  getAll(): Observable<any> {
     return this.db.list('/categories').snapshotChanges()
       .pipe(
         map(category => {
           return category.map(c => {
             const key = c.payload.key;
             const data = c.payload.val();
-            return {key,data};
+            return { key, data };
           })
         })
       );
