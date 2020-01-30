@@ -42,8 +42,6 @@ export class ProductsComponent implements OnInit, OnDestroy {
       .subscribe(cart => {
         this.cart = cart.payload.val();
       })
-
-
   }
 
   ngOnDestroy() {
