@@ -7,6 +7,9 @@ export class ShoppingCart {
 
     }
 
+    get productIds(){
+        return Object.keys(this.items)
+    }
 
     get totalItemCount(): number {
         let count = 0;
