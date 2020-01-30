@@ -37,13 +37,16 @@ export class ShoppingCartService {
     return cartId;
   }
 
+  private getItem(cartId: string, productId: string) {
+    return this.db.object<Item>('shopping-carts/' + cartId + '/items/' + productId);
+  }
+
   async addToCart(product: FirebaseData<Product>) {
     let cartId = await this.getOrCreateCartId();
-    let item$ = this.db.object<Item>('shopping-carts/' + cartId + '/items/' + product.key);
+    let item$ = this.getItem(cartId, product.key);
     item$.snapshotChanges().pipe(
       take(1)
     ).subscribe(item => {
-      console.log("payload val", item.payload.val());
       if (item.payload.val()) {
         item$.update({ quantity: item.payload.val().quantity + 1 })
       } else {
