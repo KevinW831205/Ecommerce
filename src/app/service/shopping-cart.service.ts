@@ -9,8 +9,8 @@ export class ShoppingCartService {
   constructor(private db: AngularFireDatabase) { }
 
   create() {
-    this.db.list('/shopping-carts').push({
-      dateCreated:new Date().getTime();
+    return this.db.list('/shopping-carts').push({
+      dateCreated:new Date().getTime()
     })
   }
 }
