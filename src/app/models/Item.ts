@@ -1,4 +1,6 @@
+import { Product } from './Product';
+
 export class Item{
-    product;
+    product: Product;
     quantity: number;
 }
