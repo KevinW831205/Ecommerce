@@ -14,15 +14,16 @@ import { FirebaseData } from 'src/app/models/FirebaseData';
 export class ProductFormComponent implements OnInit {
 
   categories$;
-  product: FirebaseData<Product>;
-  // product: any = {
-  //   data: {
-  //     title: "",
-  //     price: "",
-  //     imageUrl: "",
-  //     category: ""
-  //   }
-  // };
+  product: FirebaseData<Product> = {
+    key: null,
+    data: {
+      title: null,
+      price: null,
+      imageUrl: null,
+      category: null
+    }
+  };
+
   id;
   constructor(categoryService: CategoryService, private productService: ProductService, private router: Router, private route: ActivatedRoute) {
     this.categories$ = categoryService.getCategories();
@@ -42,15 +43,15 @@ export class ProductFormComponent implements OnInit {
 
   save(product) {
     if (this.id) {
-      this.productService.update(this.id,product);
+      this.productService.update(this.id, product);
     } else {
       this.productService.create(product);
     }
     this.router.navigate(['/admin/products'])
   }
 
-  delete(){
-    if(confirm('are you sure you want to delete this product?')){
+  delete() {
+    if (confirm('are you sure you want to delete this product?')) {
       this.productService.delete(this.id)
       this.router.navigate(['/admin/products'])
     }
