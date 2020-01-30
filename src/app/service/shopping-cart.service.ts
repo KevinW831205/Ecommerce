@@ -5,6 +5,7 @@ import { FirebaseData } from '../models/FirebaseData';
 import { take, map } from 'rxjs/operators'
 import { Item } from '../models/Item';
 import { ShoppingCart } from '../models/ShoppingCart';
+import { Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -19,9 +20,12 @@ export class ShoppingCartService {
     })
   }
 
-  async getCart(): Promise<AngularFireObject<ShoppingCart>> {
+  async getCart(): Promise<Observable<ShoppingCart>> {
     let cartId = await this.getOrCreateCartId()
-    return this.db.object<ShoppingCart>('/shopping-carts/' + cartId);
+    return this.db.object<ShoppingCart>('/shopping-carts/' + cartId).snapshotChanges()
+      .pipe(
+        map(x => new ShoppingCart(x.payload.val().items))
+      );
   }
 
   private async getOrCreateCartId(): Promise<string> {
@@ -63,7 +67,7 @@ export class ShoppingCartService {
     item$.snapshotChanges().pipe(
       take(1)
     ).subscribe(item => {
-      if (item.payload.val().quantity>0) {
+      if (item.payload.val().quantity > 0) {
         item$.update({ quantity: item.payload.val().quantity - 1 })
       }
     })

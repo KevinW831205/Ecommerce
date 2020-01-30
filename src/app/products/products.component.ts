@@ -6,6 +6,7 @@ import { Product } from '../models/Product';
 import { switchMap } from 'rxjs/operators';
 import { ShoppingCartService } from '../service/shopping-cart.service';
 import { Subscription } from 'rxjs';
+import { ShoppingCart } from '../models/ShoppingCart';
 
 @Component({
   selector: 'app-products',
@@ -16,7 +17,7 @@ export class ProductsComponent implements OnInit, OnDestroy {
   products: FirebaseData<Product>[] = [];
   filteredProducts: FirebaseData<Product>[];
   category: string;
-  cart: any;
+  cart: ShoppingCart;
   subscription: Subscription;
 
   constructor(private productService: ProductService, route: ActivatedRoute, private shoppingCartService: ShoppingCartService) {
@@ -38,9 +39,9 @@ export class ProductsComponent implements OnInit, OnDestroy {
   }
 
   async ngOnInit() {
-    this.subscription = await (await (this.shoppingCartService.getCart())).snapshotChanges()
+    this.subscription = await (await (this.shoppingCartService.getCart()))
       .subscribe(cart => {
-        this.cart = cart.payload.val();
+        this.cart = cart;
       })
   }
 
