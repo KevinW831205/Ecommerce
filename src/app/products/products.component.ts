@@ -33,18 +33,6 @@ export class ProductsComponent {
           this.products;
       })
 
-    // .subscribe(
-    //   products => {
-    //     this.products = products;
-    //     route.queryParamMap.subscribe(params => {
-    //       this.category = params.get('category');
-    // this.filteredProducts = this.category ?
-    //   this.products.filter(p => p.data.category === this.category) :
-    //   this.products
-    //     })
-    //   }
-    // );
-
 
     this.categories$ = categoryService.getAll();
 
