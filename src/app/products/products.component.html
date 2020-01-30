@@ -7,14 +7,7 @@
     <div class="col p-0">
         <div class=row>
             <div *ngFor="let p of filteredProducts" class="col-sm-12 col-md-6 col-lg-4 mt-3 ">
-                <div class="card h-100">
-                    <img [src]="p.data.imageUrl" class="card-img-top" alt="temp-image">
-                    <div class="card-body">
-                        <h5 class="card-title">{{p.data.title}}</h5>
-                        <p class="card-text">{{p.data.price | currency:'USD'}}</p>
-                        <a class="btn btn-primary text-white">add to cart</a>
-                    </div>
-                </div>
+                <app-product-card [product]="p.data" ></app-product-card>
             </div>
         </div>
     </div>
