@@ -55,8 +55,13 @@ export class ShoppingCartService {
       take(1)
     ).subscribe(item => {
       if (item.payload.val().quantity > 0) {
-        item$.update({ quantity: item.payload.val().quantity - 1 })
-      }
+        let newQuantity = item.payload.val().quantity - 1;
+        console.log(newQuantity)
+        item$.update({ quantity: newQuantity })
+        if(newQuantity === 0){
+          item$.remove();
+        }
+      } 
     })
   }
 
