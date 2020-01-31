@@ -14,4 +14,8 @@ export class Item {
     get totalPrice() {
         return this.price * this.quantity;
     }
+
+    set totalPrice(x){
+        
+    }
 }
