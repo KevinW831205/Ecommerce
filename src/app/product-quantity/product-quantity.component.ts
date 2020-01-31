@@ -2,6 +2,7 @@ import { Component, OnInit, Input } from '@angular/core';
 import { Product } from '../models/Product';
 import { FirebaseData } from '../models/FirebaseData';
 import { ShoppingCartService } from '../service/shopping-cart.service';
+import { ShoppingCart } from '../models/ShoppingCart';
 
 @Component({
   selector: 'app-product-quantity',
@@ -10,7 +11,7 @@ import { ShoppingCartService } from '../service/shopping-cart.service';
 })
 export class ProductQuantityComponent {
   @Input('product') product: FirebaseData<Product> = null;
-  @Input('shopping-cart') shoppingCart;
+  @Input('shopping-cart') shoppingCart: ShoppingCart;
 
   constructor(private shoppingCartService: ShoppingCartService) { }
 
