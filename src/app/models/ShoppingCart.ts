@@ -1,4 +1,6 @@
 import { Item } from './Item';
+import { Product } from './Product';
+import { FirebaseData } from './FirebaseData';
 
 export class ShoppingCart {
 
@@ -10,6 +12,13 @@ export class ShoppingCart {
         }
     }
 
+    get totalPrice(): number {
+        let sum = 0;
+        this.itemsArr.forEach(item => {
+            sum += item.totalPrice;
+        })
+        return sum;
+    }
 
     get totalItemCount(): number {
         let count = 0;
@@ -18,6 +27,12 @@ export class ShoppingCart {
         }
         return count;
     }
+
+    getQuantity(product: FirebaseData<Product>) {
+        let item = this.items[product.key];
+        return item ? item.quantity : 0;
+    }
+
 
 
 
