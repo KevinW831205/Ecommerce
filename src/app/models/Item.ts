@@ -7,8 +7,8 @@ export class Item {
     price: number;
     quantity: number
 
-    constructor(){
-
+    constructor(init?: Partial<Item>) {
+        Object.assign(this, init)
     }
 
     get totalPrice() {

@@ -8,11 +8,14 @@ export class ShoppingCart {
     constructor(public items: { [key: string]: Item }) {
         this.items = items || {};
         for (let productId in items) {
-            let item = items[productId]
-            let mappedItem = new Item();
-            Object.assign(mappedItem, item);
+            let item = items[productId];
 
-            this.itemsArr.push(new FirebaseData<Item>(productId, mappedItem));
+
+            this.itemsArr.push(new FirebaseData(productId, new Item({ ...item })))
+
+            // let mappedItem = new Item();
+            // Object.assign(mappedItem, item);
+            // this.itemsArr.push(new FirebaseData<Item>(productId, mappedItem));
         }
     }
 
