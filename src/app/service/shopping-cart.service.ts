@@ -12,21 +12,23 @@ import { Title } from '@angular/platform-browser';
   providedIn: 'root'
 })
 export class ShoppingCartService {
+  cart$
 
   constructor(private db: AngularFireDatabase) { }
 
   async clearCart() {
-    console.log("service")
     let cartId = await this.getOrCreateCartId();
-    this.db.object('/shopping-carts/' + cartId+'/items').remove();
+    this.db.object('/shopping-carts/' + cartId + '/items').remove();
   }
 
   async getCart(): Promise<Observable<ShoppingCart>> {
+    console.log("called")
     let cartId = await this.getOrCreateCartId()
-    return this.db.object<ShoppingCart>('/shopping-carts/' + cartId).snapshotChanges()
+    this.cart$ = this.db.object<ShoppingCart>('/shopping-carts/' + cartId).snapshotChanges()
       .pipe(
         map(x => new ShoppingCart(x.payload.val().items))
       );
+    return this.cart$;
   }
 
   async addToCart(product: FirebaseData<Product>) {
@@ -58,10 +60,10 @@ export class ShoppingCartService {
         let newQuantity = item.payload.val().quantity - 1;
         console.log(newQuantity)
         item$.update({ quantity: newQuantity })
-        if(newQuantity === 0){
+        if (newQuantity === 0) {
           item$.remove();
         }
-      } 
+      }
     })
   }
 
@@ -73,11 +75,19 @@ export class ShoppingCartService {
 
 
   private async getOrCreateCartId(): Promise<string> {
+    // let cartId = this.localShoppingCartService.getLocalShoppingCartId()
+
     let cartId = localStorage.getItem('cartId');
     if (!cartId) {
       let result = await this.create();
-      localStorage.setItem('cartId', result.key)
-      return result.key;
+      cartId = localStorage.getItem('cartId')
+      if (cartId) {
+        this.db.object('/shopping-carts/'+result.key).remove()
+        return cartId;
+      } else {
+        localStorage.setItem('cartId', result.key)
+        return result.key;
+      }
       // this.create().then(
       //   result => {
       // localStorage.setItem('cartId', result.key)

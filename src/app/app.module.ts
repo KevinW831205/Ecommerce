@@ -67,7 +67,7 @@ import { ProductQuantityComponent } from './product-quantity/product-quantity.co
     AdminAuthGuard,
     CategoryService,
     ProductService,
-    ShoppingCartService
+    ShoppingCartService,
   ],
   bootstrap: [AppComponent]
 })
