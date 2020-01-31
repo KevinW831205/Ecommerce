@@ -4,18 +4,22 @@ import { FirebaseData } from './FirebaseData';
 
 export class ShoppingCart {
 
-    itemsArr: Item[] = [];
+    itemsArr: FirebaseData<Item>[] = [];
     constructor(public items: { [key: string]: Item }) {
+        this.items = items || {};
         for (let productId in items) {
             let item = items[productId]
-            this.itemsArr.push(new Item(item.product, item.quantity))
+            let mappedItem = new Item();
+            Object.assign(mappedItem, item);
+
+            this.itemsArr.push(new FirebaseData<Item>(productId, mappedItem));
         }
     }
 
     get totalPrice(): number {
         let sum = 0;
         this.itemsArr.forEach(item => {
-            sum += item.totalPrice;
+            sum += item.data.totalPrice;
         })
         return sum;
     }

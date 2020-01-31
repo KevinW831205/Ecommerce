@@ -6,6 +6,7 @@ import { take, map } from 'rxjs/operators'
 import { Item } from '../models/Item';
 import { ShoppingCart } from '../models/ShoppingCart';
 import { Observable } from 'rxjs';
+import { Title } from '@angular/platform-browser';
 
 @Injectable({
   providedIn: 'root'
@@ -56,7 +57,12 @@ export class ShoppingCartService {
       if (item.payload.val()) {
         item$.update({ quantity: item.payload.val().quantity + 1 })
       } else {
-        item$.set({ product: product.data, quantity: 1 })
+        item$.set({
+          title: product.data.title,
+          price: product.data.price,
+          imageUrl: product.data.imageUrl,
+          quantity: 1
+        })
       }
     })
   }

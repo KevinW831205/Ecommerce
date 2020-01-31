@@ -10,7 +10,7 @@ import { ShoppingCart } from '../models/ShoppingCart';
   styleUrls: ['./product-quantity.component.css']
 })
 export class ProductQuantityComponent {
-  @Input('product') product: FirebaseData<Product> = null;
+  @Input('product') product: FirebaseData<Product>;
   @Input('shopping-cart') shoppingCart: ShoppingCart;
 
   constructor(private shoppingCartService: ShoppingCartService) { }

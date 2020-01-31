@@ -13,7 +13,8 @@ export class ProductCardComponent {
   @Input('show-actions') showActions = false;
   @Input('shopping-cart') shoppingCart;
 
-  constructor(private shoppingCartService: ShoppingCartService) { }
+  constructor(private shoppingCartService: ShoppingCartService) {
+  }
 
   addToCart() {
     this.shoppingCartService.addToCart(this.product);

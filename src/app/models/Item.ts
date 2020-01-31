@@ -2,9 +2,16 @@ import { Product } from './Product';
 
 export class Item {
 
-    constructor(public product: Product, public quantity: number) { }
+    title: string;
+    imageUrl: string;
+    price: number;
+    quantity: number
+
+    constructor(){
+
+    }
 
     get totalPrice() {
-        return this.product.price * this.quantity;
+        return this.price * this.quantity;
     }
 }
