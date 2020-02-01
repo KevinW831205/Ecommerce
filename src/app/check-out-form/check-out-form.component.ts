@@ -15,4 +15,8 @@ export class CheckOutFormComponent implements OnInit {
   ngOnInit() {
   }
 
+  checkOut(){
+    console.log(this.shipping);
+  }
+
 }

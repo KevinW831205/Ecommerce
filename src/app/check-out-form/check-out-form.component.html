@@ -23,7 +23,8 @@
             <div *ngIf="city.errors.required">City is required</div>
         </div>
     </div>
-
-
+    <button (click)="checkOut()" class="btn btn-primary" [disabled]="!shippingForm.valid">
+        Place Order
+    </button>
 
 </form>
