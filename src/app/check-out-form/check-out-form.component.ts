@@ -3,6 +3,8 @@ import { Shipping } from '../models/Shipping';
 import { ShoppingCart } from '../models/ShoppingCart';
 import { ShoppingCartService } from '../service/shopping-cart.service';
 import { Subscription } from 'rxjs';
+import { Order } from '../models/Order';
+import { Item } from '../models/Item';
 
 @Component({
   selector: 'app-check-out-form',
@@ -28,6 +30,15 @@ export class CheckOutFormComponent implements OnInit, OnDestroy {
 
   checkOut() {
     console.log(this.shipping);
+    let order: Order = {
+      datePlaced: new Date().getTime(),
+      shipping: this.shipping,
+      items: this.cart.itemsArr.map(item => {
+        return item.data;
+      }),
+      totalPrice: this.cart.totalPrice
+    }
+
   }
 
 }
