@@ -18,15 +18,15 @@ export class CheckOutFormComponent implements OnInit, OnDestroy {
   shipping: Shipping = new Shipping();
   cart: ShoppingCart;
   cartSubscription: Subscription;
-  userSubscription: Subscription
-  userId: String;
+  userSubscription: Subscription;
+  userId: string;
 
   constructor(private shoppingCartService: ShoppingCartService, private orderService: OrderService, private authService: AuthService) { }
 
   async ngOnInit() {
     let cart$ = await this.shoppingCartService.getCart();
     this.cartSubscription = cart$.subscribe(cart => this.cart = cart);
-    this.authService.user$.subscribe(user => this.userId = user.uid)
+    this.userSubscription = this.authService.user$.subscribe(user => this.userId = user.uid)
   }
 
   ngOnDestroy() {
@@ -36,6 +36,7 @@ export class CheckOutFormComponent implements OnInit, OnDestroy {
 
   checkOut() {
     let order: Order = {
+      userId: this.userId,
       datePlaced: new Date().getTime(),
       shipping: this.shipping,
       items: this.cart.itemsArr.map(item => {
