@@ -2,8 +2,6 @@
     <div class="d-none d-md-block col-md-2 col-lg-2  p-0 mr-2">
         <app-product-filter [category]="category"></app-product-filter>
     </div>
-
-
     <div class="col p-0">
         <div class="row" *ngIf="cart$  | async as cart">
             <div *ngFor="let p of filteredProducts" class="col-sm-12 col-md-6 col-lg-4 mt-3 ">
@@ -11,5 +9,4 @@
             </div>
         </div>
     </div>
-
 </div>
