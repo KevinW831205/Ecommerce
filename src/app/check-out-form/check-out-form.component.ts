@@ -6,6 +6,7 @@ import { Subscription } from 'rxjs';
 import { Order } from '../models/Order';
 import { Item } from '../models/Item';
 import { OrderService } from '../service/order.service';
+import { AuthService } from '../service/auth.service';
 
 @Component({
   selector: 'app-check-out-form',
@@ -16,17 +17,21 @@ export class CheckOutFormComponent implements OnInit, OnDestroy {
 
   shipping: Shipping = new Shipping();
   cart: ShoppingCart;
-  subscription: Subscription;
+  cartSubscription: Subscription;
+  userSubscription: Subscription
+  userId: String;
 
-  constructor(private shoppingCartService: ShoppingCartService, private orderService: OrderService) { }
+  constructor(private shoppingCartService: ShoppingCartService, private orderService: OrderService, private authService: AuthService) { }
 
   async ngOnInit() {
     let cart$ = await this.shoppingCartService.getCart();
-    this.subscription = cart$.subscribe(cart => this.cart = cart);
+    this.cartSubscription = cart$.subscribe(cart => this.cart = cart);
+    this.authService.user$.subscribe(user => this.userId = user.uid)
   }
 
   ngOnDestroy() {
-    this.subscription.unsubscribe();
+    this.cartSubscription.unsubscribe();
+    this.userSubscription.unsubscribe();
   }
 
   checkOut() {
