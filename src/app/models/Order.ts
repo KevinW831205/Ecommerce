@@ -1,10 +1,15 @@
 import { Shipping } from './Shipping';
 import { Item } from './Item';
+import { ShoppingCart } from './ShoppingCart';
 
-export class Order{
-    userId : string;
+export class Order {
     datePlaced: any;
-    shipping: Shipping;
     items: Item[];
-    totalPrice: number;
+
+    constructor(public userId: string, public shipping: Shipping, shoppingCart: ShoppingCart) {
+        this.datePlaced = new Date().getTime();
+        this.items = shoppingCart.itemsArr.map(item=>{
+            return item.data;
+        })
+    }
 }

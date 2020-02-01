@@ -35,16 +35,7 @@ export class CheckOutFormComponent implements OnInit, OnDestroy {
   }
 
   checkOut() {
-    let order: Order = {
-      userId: this.userId,
-      datePlaced: new Date().getTime(),
-      shipping: this.shipping,
-      items: this.cart.itemsArr.map(item => {
-        return item.data;
-      }),
-      totalPrice: this.cart.totalPrice
-    }
-
+    let order = new Order(this.userId, this.shipping, this.cart)
     this.orderService.storeOrder(order);
   }
 
