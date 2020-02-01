@@ -1,21 +1,32 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { Shipping } from '../models/Shipping';
+import { ShoppingCart } from '../models/ShoppingCart';
+import { ShoppingCartService } from '../service/shopping-cart.service';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-check-out-form',
   templateUrl: './check-out-form.component.html',
   styleUrls: ['./check-out-form.component.css']
 })
-export class CheckOutFormComponent implements OnInit {
+export class CheckOutFormComponent implements OnInit, OnDestroy {
 
   shipping: Shipping = new Shipping();
+  cart: ShoppingCart;
+  subscription: Subscription;
 
-  constructor() { }
+  constructor(private shoppingCartService: ShoppingCartService) { }
 
-  ngOnInit() {
+  async ngOnInit() {
+    let cart$ = await this.shoppingCartService.getCart();
+    this.subscription = cart$.subscribe(cart => this.cart = cart);
   }
 
-  checkOut(){
+  ngOnDestroy() {
+    this.subscription.unsubscribe();
+  }
+
+  checkOut() {
     console.log(this.shipping);
   }
 
