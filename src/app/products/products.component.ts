@@ -20,11 +20,14 @@ export class ProductsComponent implements OnInit {
   cart$: Observable<ShoppingCart>;
   subscription: Subscription;
 
-  constructor(private productService: ProductService, private route: ActivatedRoute, private shoppingCartService: ShoppingCartService) {
-
-  }
+  constructor(private productService: ProductService, private route: ActivatedRoute, private shoppingCartService: ShoppingCartService) { }
 
   async ngOnInit() {
+    this.populateProducts()
+    this.cart$ = await this.shoppingCartService.getCart();
+  }
+
+  private populateProducts() {
     this.productService.getAll()
       .pipe(
         switchMap(products => {
@@ -34,11 +37,13 @@ export class ProductsComponent implements OnInit {
       )
       .subscribe(params => {
         this.category = params.get('category');
-        this.filteredProducts = this.category ?
-          this.products.filter(p => p.data.category === this.category) :
-          this.products;
+        this.applyFilter();
       })
+  }
 
-    this.cart$ = await this.shoppingCartService.getCart();
+  private applyFilter() {
+    this.filteredProducts = this.category ?
+      this.products.filter(p => p.data.category === this.category) :
+      this.products;
   }
 }
