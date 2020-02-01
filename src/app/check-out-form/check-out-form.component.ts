@@ -8,7 +8,7 @@ import { Shipping } from '../models/Shipping';
 })
 export class CheckOutFormComponent implements OnInit {
 
-  shipping: Shipping;
+  shipping: Shipping = new Shipping();
 
   constructor() { }
 
