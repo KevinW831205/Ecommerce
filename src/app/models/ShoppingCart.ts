@@ -5,7 +5,7 @@ import { FirebaseData } from './FirebaseData';
 export class ShoppingCart {
 
     itemsArr: FirebaseData<Item>[] = [];
-    constructor(public items: { [key: string]: Item }) {
+    constructor(private items: { [key: string]: Item }) {
         this.items = items || {};
         for (let productId in items) {
             let item = items[productId];
