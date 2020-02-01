@@ -5,7 +5,7 @@ import { FirebaseData } from '../models/FirebaseData';
 import { Product } from '../models/Product';
 import { switchMap } from 'rxjs/operators';
 import { ShoppingCartService } from '../service/shopping-cart.service';
-import { Subscription } from 'rxjs';
+import { Subscription, Observable } from 'rxjs';
 import { ShoppingCart } from '../models/ShoppingCart';
 
 @Component({
@@ -13,21 +13,23 @@ import { ShoppingCart } from '../models/ShoppingCart';
   templateUrl: './products.component.html',
   styleUrls: ['./products.component.css']
 })
-export class ProductsComponent implements OnInit, OnDestroy {
+export class ProductsComponent implements OnInit {
   products: FirebaseData<Product>[] = [];
   filteredProducts: FirebaseData<Product>[];
   category: string;
-  cart: ShoppingCart;
+  cart$: Observable<ShoppingCart>;
   subscription: Subscription;
 
-  constructor(private productService: ProductService, route: ActivatedRoute, private shoppingCartService: ShoppingCartService) {
+  constructor(private productService: ProductService, private route: ActivatedRoute, private shoppingCartService: ShoppingCartService) {
 
+  }
 
-    productService.getAll()
+  async ngOnInit() {
+    this.productService.getAll()
       .pipe(
         switchMap(products => {
           this.products = products;
-          return route.queryParamMap;
+          return this.route.queryParamMap;
         })
       )
       .subscribe(params => {
@@ -36,20 +38,7 @@ export class ProductsComponent implements OnInit, OnDestroy {
           this.products.filter(p => p.data.category === this.category) :
           this.products;
       })
+
+    this.cart$ = await this.shoppingCartService.getCart();
   }
-
-  async ngOnInit() {
-    this.subscription = await (await (this.shoppingCartService.getCart()))
-      .subscribe(cart => {
-        this.cart = cart;
-        console.log("product get cart")
-      })
-  }
-
-  ngOnDestroy() {
-    this.subscription.unsubscribe();
-  }
-
-
-
 }
