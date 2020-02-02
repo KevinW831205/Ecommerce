@@ -14,10 +14,11 @@ import { Router } from '@angular/router';
   styleUrls: ['./check-out-form.component.css']
 })
 export class CheckOutFormComponent {
-
-  shipping: Shipping = new Shipping();
   @Input('cart') cart: ShoppingCart;
   @Input('userId') userId: string;
+
+  shipping: Shipping = new Shipping();
+
 
   constructor(private orderService: OrderService ,private router: Router) { }
 
