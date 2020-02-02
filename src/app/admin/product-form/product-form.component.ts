@@ -3,8 +3,8 @@ import { CategoryService } from 'src/app/service/category.service';
 import { ProductService } from 'src/app/service/product.service';
 import { Router, ActivatedRoute } from '@angular/router';
 import { take } from 'rxjs/operators';
-import { Product } from 'src/app/models/Product';
-import { FirebaseData } from 'src/app/models/FirebaseData';
+import { Product } from 'shared/models/Product';
+import { FirebaseData } from 'shared/models/FirebaseData';
 
 @Component({
   selector: 'app-product-form',

@@ -2,8 +2,8 @@ import { Injectable } from '@angular/core';
 import { AngularFireDatabase } from 'angularfire2/database';
 import { map } from 'rxjs/operators';
 import { Observable } from 'rxjs';
-import { FirebaseData } from '../models/FirebaseData';
-import { Product } from '../models/Product';
+import { FirebaseData } from 'shared/models/FirebaseData';
+import { Product } from 'shared/models/Product';
 
 @Injectable({
   providedIn: 'root'

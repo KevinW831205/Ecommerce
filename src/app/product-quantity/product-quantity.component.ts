@@ -1,8 +1,8 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { Product } from '../models/Product';
-import { FirebaseData } from '../models/FirebaseData';
+import { Product } from 'shared/models/Product';
+import { FirebaseData } from 'shared/models/FirebaseData';
 import { ShoppingCartService } from '../service/shopping-cart.service';
-import { ShoppingCart } from '../models/ShoppingCart';
+import { ShoppingCart } from 'shared/models/ShoppingCart';
 
 @Component({
   selector: 'app-product-quantity',

@@ -1,7 +1,7 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { Product } from '../models/Product';
+import { Product } from 'shared/models/Product';
 import { ShoppingCartService } from '../service/shopping-cart.service';
-import { FirebaseData } from '../models/FirebaseData';
+import { FirebaseData } from 'shared/models/FirebaseData';
 
 @Component({
   selector: 'app-product-card',

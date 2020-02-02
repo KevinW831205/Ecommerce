@@ -1,8 +1,8 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { ProductService } from 'src/app/service/product.service';
 import { Observable, Subscription } from 'rxjs';
-import { Product } from 'src/app/models/Product';
-import { FirebaseData } from 'src/app/models/FirebaseData';
+import { Product } from 'shared/models/Product';
+import { FirebaseData } from 'shared/models/FirebaseData';
 
 @Component({
   selector: 'app-admin-products',
