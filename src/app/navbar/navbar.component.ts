@@ -4,7 +4,7 @@ import * as firebase from 'firebase';
 import { Observable } from 'rxjs';
 import { AuthService } from 'shared/services/auth.service';
 import { AppUser } from 'shared/models/AppUser';
-import { ShoppingCartService } from '../service/shopping-cart.service';
+import { ShoppingCartService } from 'shared/services/shopping-cart.service';
 import { ShoppingCart } from 'shared/models/ShoppingCart';
 import { SnapshotAction } from 'angularfire2/database';
 

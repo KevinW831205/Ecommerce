@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { OrderService } from 'src/app/service/order.service';
+import { OrderService } from 'shared/services/order.service';
 import { Observable } from 'rxjs';
 import { Order } from 'shared/models/Order';
 

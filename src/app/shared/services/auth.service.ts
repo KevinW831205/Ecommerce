@@ -6,7 +6,7 @@ import { Observable, of } from 'rxjs';
 import { ActivatedRoute, Router } from '@angular/router';
 import { AppUser } from 'shared/models/AppUser';
 import { switchMap, map } from 'rxjs/operators';
-import { UserService } from '../../service/user.service';
+import { UserService } from 'shared/services/user.service';
 
 
 @Injectable({

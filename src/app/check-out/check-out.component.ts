@@ -1,6 +1,6 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { ShoppingCart } from 'shared/models/ShoppingCart';
-import { ShoppingCartService } from '../service/shopping-cart.service';
+import { ShoppingCartService } from 'shared/services/shopping-cart.service';
 import { AuthService } from 'shared/services/auth.service';
 import { Subscription, Observable } from 'rxjs';
 
