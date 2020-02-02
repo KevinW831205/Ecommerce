@@ -32,7 +32,7 @@ export class OrderService {
   }
 
   getOrdersByUser(userId: string) {
-    this.db.list('/orders', ref => ref.equalTo(userId)).snapshotChanges().pipe(
+    return this.db.list<Order>('/orders', ref => ref.orderByChild('/userId').equalTo(userId)).snapshotChanges().pipe(
       map(orders => {
         return orders.map(o => {
           const key = o.key;
