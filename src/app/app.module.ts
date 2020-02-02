@@ -20,7 +20,7 @@ import { AdminProductsComponent } from './admin/admin-products/admin-products.co
 import { AdminOrdersComponent } from './admin/admin-orders/admin-orders.component';
 import { LoginComponent } from './login/login.component';
 import { AuthService } from './service/auth.service';
-import { AuthGuard } from './service/auth-guard.service';
+import { AuthGuard } from 'shared/services/auth-guard.service';
 import { UserService } from './service/user.service';
 import { AdminAuthGuard } from './service/admin-auth-guard.service';
 import { ProductFormComponent } from './admin/product-form/product-form.component';

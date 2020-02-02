@@ -9,7 +9,7 @@ import { LoginComponent } from './login/login.component';
 import { AdminOrdersComponent } from './admin/admin-orders/admin-orders.component';
 import { AdminProductsComponent } from './admin/admin-products/admin-products.component';
 import { MyOrdersComponent } from './my-orders/my-orders.component';
-import { AuthGuard } from './service/auth-guard.service';
+import { AuthGuard } from 'shared/services/auth-guard.service';
 import { AdminAuthGuard } from './service/admin-auth-guard.service';
 import { ProductFormComponent } from './admin/product-form/product-form.component';
 import { AuthService } from './service/auth.service';
