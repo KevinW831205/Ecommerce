@@ -12,7 +12,7 @@
             <td>{{order.data.shipping.name}}</td>
             <td>{{order.data.datePlaced | date: 'MMM dd, YYYY'}}</td>
             <td>
-                <a [routerLink]="">details</a>
+                <a [routerLink]="['/orders/',order.key]">details</a>
             </td>
         </tr>
     </tbody>

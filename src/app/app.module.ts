@@ -33,6 +33,7 @@ import { ShoppingCartService } from './service/shopping-cart.service';
 import { ProductQuantityComponent } from './product-quantity/product-quantity.component';
 import { CheckOutFormComponent } from './check-out-form/check-out-form.component';
 import { ShoppingCartSummaryComponent } from './shopping-cart-summary/shopping-cart-summary.component';
+import { OrderDetailsComponent } from './order-details/order-details.component';
 
 @NgModule({
   declarations: [
@@ -52,7 +53,8 @@ import { ShoppingCartSummaryComponent } from './shopping-cart-summary/shopping-c
     ProductCardComponent,
     ProductQuantityComponent,
     CheckOutFormComponent,
-    ShoppingCartSummaryComponent
+    ShoppingCartSummaryComponent,
+    OrderDetailsComponent
   ],
   imports: [
     BrowserModule,
