@@ -6,17 +6,21 @@ import { AuthService } from '../service/auth.service';
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.css']
 })
-export class LoginComponent{
+export class LoginComponent {
 
-  constructor(private auth: AuthService ) {
+  constructor(private auth: AuthService) {
 
   }
 
   ngOnInit() {
   }
 
-login() {
+  login() {
     this.auth.login();
+  }
+
+  demoLogin(){
+    this.auth.demoLogin();
   }
 
 }

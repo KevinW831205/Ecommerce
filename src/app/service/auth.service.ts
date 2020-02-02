@@ -22,12 +22,11 @@ export class AuthService {
   login() {
     let returnUrl = this.route.snapshot.queryParamMap.get('returnUrl') || '/';
     localStorage.setItem('returnUrl', returnUrl);
-
     this.afAuth.auth.signInWithRedirect(new firebase.auth.GoogleAuthProvider());
-
   }
 
   logout() {
+
     this.afAuth.auth.signOut().then(() => {
       this.router.navigate(['/'])
     });
@@ -40,9 +39,24 @@ export class AuthService {
           if (user) {
             return this.userService.get(user.uid).valueChanges()
           }
-
           return of(null);
         })
       )
   }
+
+  demoLogin() {
+    console.log("auth hit")
+    this.afAuth.auth.signInWithEmailAndPassword("demouser@demo.com", "demo123")
+      .then(r => {
+        this.userService.save(r.user);
+        let returnUrl = this.route.snapshot.queryParamMap.get('returnUrl') || '/';
+        this.router.navigateByUrl(returnUrl)
+      })
+      .catch(e => {
+        console.log(e)
+      });
+  }
+
+
 }
+
