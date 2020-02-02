@@ -12,7 +12,7 @@ import { MyOrdersComponent } from './my-orders/my-orders.component';
 import { AuthGuard } from 'shared/services/auth-guard.service';
 import { AdminAuthGuard } from './service/admin-auth-guard.service';
 import { ProductFormComponent } from './admin/product-form/product-form.component';
-import { AuthService } from './service/auth.service';
+import { AuthService } from 'shared/services/auth.service';
 import { OrderDetailsComponent } from './order-details/order-details.component';
 
 

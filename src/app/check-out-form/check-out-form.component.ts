@@ -5,7 +5,7 @@ import { ShoppingCartService } from '../service/shopping-cart.service';
 import { Subscription } from 'rxjs';
 import { Order } from 'shared/models/Order';
 import { OrderService } from '../service/order.service';
-import { AuthService } from '../service/auth.service';
+import { AuthService } from 'shared/services/auth.service';
 import { Router } from '@angular/router';
 
 @Component({

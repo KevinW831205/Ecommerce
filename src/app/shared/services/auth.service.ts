@@ -1,12 +1,12 @@
 import { Injectable } from '@angular/core';
 import { AngularFireAuth } from 'angularfire2/auth';
 import * as firebase from 'firebase';
-import { LoginComponent } from '../login/login.component';
+import { LoginComponent } from '../../login/login.component';
 import { Observable, of } from 'rxjs';
 import { ActivatedRoute, Router } from '@angular/router';
 import { AppUser } from 'shared/models/AppUser';
 import { switchMap, map } from 'rxjs/operators';
-import { UserService } from './user.service';
+import { UserService } from '../../service/user.service';
 
 
 @Injectable({
