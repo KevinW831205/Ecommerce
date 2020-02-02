@@ -48,6 +48,7 @@ export class AuthService {
     console.log("auth hit")
     this.afAuth.auth.signInWithEmailAndPassword("demouser@demo.com", "demo123")
       .then(r => {
+        
         this.userService.save(r.user);
         let returnUrl = this.route.snapshot.queryParamMap.get('returnUrl') || '/';
         this.router.navigateByUrl(returnUrl)
