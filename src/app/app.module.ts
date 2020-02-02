@@ -30,7 +30,7 @@ import { ProductService } from 'shared/services/product.service';
 import { ProductFilterComponent } from './product-filter/product-filter.component';
 import { ProductCardComponent } from 'shared/components/product-card/product-card.component';
 import { ShoppingCartService } from 'shared/services/shopping-cart.service';
-import { ProductQuantityComponent } from './product-quantity/product-quantity.component';
+import { ProductQuantityComponent } from 'shared/components/product-quantity/product-quantity.component';
 import { CheckOutFormComponent } from './check-out-form/check-out-form.component';
 import { ShoppingCartSummaryComponent } from './shopping-cart-summary/shopping-cart-summary.component';
 import { OrderDetailsComponent } from './order-details/order-details.component';
