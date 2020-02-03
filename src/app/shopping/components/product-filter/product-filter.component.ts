@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { CategoryService } from 'shared/services/category.service';
 
 @Component({
@@ -9,18 +9,22 @@ import { CategoryService } from 'shared/services/category.service';
 export class ProductFilterComponent implements OnInit {
   categories$;
   @Input('category') category;
+  @Output('change') change = new EventEmitter()
+  query: string;
 
-  constructor(private categoryService:CategoryService) {
+  constructor(private categoryService: CategoryService) {
     this.categories$ = categoryService.getAll();
   }
 
   ngOnInit() {
   }
 
-  filter(query){
-
+  queryFilter() {
+    this.change.emit({ value: this.query })
   }
 
+}
 
-
+export interface queryEvent {
+  value: string
 }

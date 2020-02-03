@@ -7,6 +7,7 @@ import { switchMap } from 'rxjs/operators';
 import { ShoppingCartService } from 'shared/services/shopping-cart.service';
 import { Subscription, Observable } from 'rxjs';
 import { ShoppingCart } from 'shared/models/ShoppingCart';
+import { queryEvent } from '../product-filter/product-filter.component';
 
 @Component({
   selector: 'app-products',
@@ -25,6 +26,13 @@ export class ProductsComponent implements OnInit {
   async ngOnInit() {
     this.populateProducts()
     this.cart$ = await this.shoppingCartService.getCart();
+  }
+
+  queryFilter(query: queryEvent) {
+    this.applyFilter();
+    this.filteredProducts = (query) ?
+      this.filteredProducts.filter(p => p.data.title.toLowerCase().includes(query.value.toLowerCase())) :
+      this.filteredProducts;
   }
 
   private populateProducts() {

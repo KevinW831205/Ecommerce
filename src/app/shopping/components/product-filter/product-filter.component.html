@@ -2,7 +2,7 @@
     <div>
         <p>
             <fa-icon [icon]="['fas', 'search']"></fa-icon>
-            <input #query (keyup)="filter(query.value)" type="text" class="form-control" placeholder="Search...">
+            <input [(ngModel)]="query" (keyup)="queryFilter()" type="text" class="form-control" placeholder="Search...">
         </p>
     </div>
     <ul class="list-group">
