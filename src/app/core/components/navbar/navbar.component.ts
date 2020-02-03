@@ -28,4 +28,14 @@ export class NavbarComponent implements OnInit {
     this.isMenuCollapsed = true;
     this.auth.logout();
   }
+
+  toggleMenu() {
+    this.isMenuCollapsed = !this.isMenuCollapsed; 
+    this.isFilterMenuCollapsed = true
+  }
+
+  toggleFilterMenu() {
+    this.isFilterMenuCollapsed = !this.isFilterMenuCollapsed;
+    this.isMenuCollapsed = true
+  }
 }

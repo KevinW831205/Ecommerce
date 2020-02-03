@@ -3,11 +3,12 @@
 
         <a class="navbar-brand" routerLink="/">MyEcommerce</a>
 
-        <button class="navbar-toggler" type="button" (click)="isFilterMenuCollapsed = !isFilterMenuCollapsed">
-            Search
+        <button class="navbar-toggler" type="button"
+            (click)="toggleFilterMenu()">
+            Filter
         </button>
         <button class="navbar-toggler" type="button" aria-controls="navbarSupportedContent" aria-expanded="false"
-            aria-label="Toggle navigation" (click)="isMenuCollapsed = !isMenuCollapsed">
+            aria-label="Toggle navigation" (click)= "toggleMenu()">
             <span class="navbar-toggler-icon"></span>
         </button>
 
