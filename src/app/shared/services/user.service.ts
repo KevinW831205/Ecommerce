@@ -20,7 +20,7 @@ export class UserService {
 
   saveAdmin(user: firebase.User){
     this.db.object('/users/'+user.uid).update({
-      name: user.displayName || "Anonymous Admin",
+      name: "Anonymous User",
       email: user.email,
       isAdmin: true
     })
