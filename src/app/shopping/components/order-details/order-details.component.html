@@ -1,9 +1,43 @@
 <h1>Order Detail</h1>
-<div *ngIf="order$ | async as order; else noOrder">
-    <p>{{order|json}}</p>
-    <h3>Ship To: {{order.data.shipping.name}}, {{order.data.shipping.address}}, {{order.data.shipping.city}}</h3>
-    <h4>Date Placed: {{order.data.datePlaced | date: 'MMM dd, yyyy'}}</h4>
+<div class="row">
+    <div *ngIf="order; else noOrder" class="col-sm-12 col-md-6">
+        <h4>Date Placed: {{order.data.datePlaced | date: 'MMM dd, yyyy'}}</h4>
+        <h5>Ship To: {{order.data.shipping.name}}, {{order.data.shipping.address}}, {{order.data.shipping.city}}</h5>
+
+        <br>
+
+        <h4>Items Ordered:</h4>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th></th>
+                    <th>Product</th>
+                    <th>Quantity</th>
+                    <th class="text-right">Price</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let item of orderItems">
+                    <td>
+                        <div class="thumbnail" [style.backgroundImage]="'url('+item.imageUrl+')'" alt="thumbnail">
+                        </div>
+                    </td>
+                    <td>{{item.title}}</td>
+                    <td>{{item.quantity}}</td>
+                    <td class="text-right">{{item.totalPrice | currency:'USD'}}</td>
+                </tr>
+            </tbody>
+            <tfoot>
+                <tr>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <th class="text-right ">{{total | currency:'USD'}}</th>
+                </tr>
+            </tfoot>
+        </table>
+    </div>
+    <ng-template #noOrder>
+        <h2>Couldn't find order</h2>
+    </ng-template>
 </div>
-<ng-template #noOrder>
-    <h2>Couldn't find order</h2>
-</ng-template>
