@@ -13,6 +13,8 @@ import { ShoppingCartService } from 'shared/services/shopping-cart.service';
 export class NavbarComponent implements OnInit {
   appUser: AppUser
   shoppingCart$: Observable<ShoppingCart>;
+  public isMenuCollapsed = true;
+
   constructor(private auth: AuthService, private shoppingCartService: ShoppingCartService) {
   }
 
@@ -22,6 +24,7 @@ export class NavbarComponent implements OnInit {
   }
 
   logout() {
+    this.isMenuCollapsed = true;
     this.auth.logout();
   }
 }

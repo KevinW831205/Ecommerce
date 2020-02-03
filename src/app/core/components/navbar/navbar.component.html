@@ -2,15 +2,18 @@
     <div class="container">
 
         <a class="navbar-brand" routerLink="/">MyEcommerce</a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
-            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <button 
+            class="navbar-toggler" type="button" 
+            data-toggle="collapse" data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation" 
+            (click)="isMenuCollapsed = !isMenuCollapsed">
             <span class="navbar-toggler-icon"></span>
         </button>
 
-        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <div class="collapse navbar-collapse" [ngbCollapse]="isMenuCollapsed">
             <ul class="navbar-nav mr-auto">
                 <li class="nav-item">
-                    <a class="nav-link" routerLink="/shopping-cart">
+                    <a class="nav-link" routerLink="/shopping-cart" (click)="isMenuCollapsed = true">
                         <fa-icon [icon]="['fas', 'shopping-cart']"></fa-icon> Shopping Cart
                         <span class="badge badge-pill badge-warning"
                             *ngIf="shoppingCart$ | async as cart">{{cart.totalItemCount }}</span>
@@ -21,7 +24,7 @@
             <ul class="navbar-nav">
                 <ng-template #notLoggedIn>
                     <li class="nav-item">
-                        <a class="nav-link" routerLink="/login">Login</a>
+                        <a class="nav-link" routerLink="/login" (click)="isMenuCollapsed = true">Login</a>
                     </li>
                 </ng-template>
                 <li ngbDropdown *ngIf="appUser; else notLoggedIn" class="nav-item dropdown">
@@ -31,10 +34,10 @@
                     </a>
                     <div ngbDropdownMenu class="dropdown-menu" aria-labelledby="navbarDropdown">
                         <!-- <div class="dropdown-divider"></div> -->
-                        <a class="dropdown-item" routerLink="/my/orders">My Orders</a>
+                        <a class="dropdown-item" routerLink="/my/orders" (click)="isMenuCollapsed = true">My Orders</a>
                         <ng-container *ngIf="appUser.isAdmin">
-                            <a class="dropdown-item" routerLink="/admin/orders">Manage Orders</a>
-                            <a class="dropdown-item" routerLink="/admin/products">Manage Products</a>
+                            <a class="dropdown-item" routerLink="/admin/orders" (click)="isMenuCollapsed = true">Manage Orders</a>
+                            <a class="dropdown-item" routerLink="/admin/products" (click)="isMenuCollapsed = true">Manage Products</a>
                         </ng-container>
                         <a class="dropdown-item" (click)="logout()">Log Out</a>
                     </div>
