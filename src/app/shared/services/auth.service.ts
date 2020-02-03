@@ -46,7 +46,6 @@ export class AuthService {
   demoLogin() {
     this.afAuth.auth.signInWithEmailAndPassword("demouser@demo.com", "demo123")
       .then(r => {
-        
         this.userService.save(r.user);
         let returnUrl = this.route.snapshot.queryParamMap.get('returnUrl') || '/';
         this.router.navigateByUrl(returnUrl)
@@ -57,7 +56,15 @@ export class AuthService {
   }
 
   demoAdmin(){
-    
+    this.afAuth.auth.signInWithEmailAndPassword("demoadmin@demo.com","admin123") 
+      .then(r=>{
+        this.userService.saveAdmin(r.user);
+        let returnUrl = this.route.snapshot.queryParamMap.get('returnUrl') || '/';
+        this.router.navigateByUrl(returnUrl)
+      })
+      .catch(e=>{
+        console.log(e);
+      })
   }
 
 
