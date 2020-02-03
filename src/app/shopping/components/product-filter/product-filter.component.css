@@ -1,3 +1,5 @@
-.sticky-top{
-    padding-top: 4.5rem;
+@media only screen and (min-width: 768px){
+    .sticky-top{
+        padding-top: 4.5rem;
+    }
 }
