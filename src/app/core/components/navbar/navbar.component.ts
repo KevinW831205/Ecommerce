@@ -14,6 +14,7 @@ export class NavbarComponent implements OnInit {
   appUser: AppUser
   shoppingCart$: Observable<ShoppingCart>;
   public isMenuCollapsed = true;
+  public isFilterMenuCollapsed = true;
 
   constructor(private auth: AuthService, private shoppingCartService: ShoppingCartService) {
   }

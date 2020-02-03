@@ -29,6 +29,10 @@ import { SharedModule } from 'shared/shared.module';
   ],
   imports: [
     SharedModule,
+  ],
+  exports:[
+    ProductFilterComponent
   ]
+
 })
 export class ShoppingModule { }
