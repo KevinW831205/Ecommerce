@@ -11,7 +11,7 @@ import { Order } from 'shared/models/Order';
   styleUrls: ['./order-details.component.css']
 })
 export class OrderDetailsComponent implements OnInit {
-  orders$: Observable<FirebaseData<Order>>
+  order$: Observable<FirebaseData<Order>>
 
   constructor(private route: ActivatedRoute, private orderService: OrderService) {
 
@@ -19,8 +19,8 @@ export class OrderDetailsComponent implements OnInit {
 
   ngOnInit() {
     console.log(this.route.snapshot.paramMap.get('id'))
-    this.orders$ = this.orderService.getOrderById(this.route.snapshot.paramMap.get('id'))
-    this.orders$.subscribe(s=>{
+    this.order$ = this.orderService.getOrderById(this.route.snapshot.paramMap.get('id'))
+    this.order$.subscribe(s=>{
       console.log(s)
     })
   }

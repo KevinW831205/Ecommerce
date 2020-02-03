@@ -1,4 +1,9 @@
-<p>order-details works!</p>
-<ng-template >
-
+<h1>Order Detail</h1>
+<div *ngIf="order$ | async as order; else noOrder">
+    <p>{{order|json}}</p>
+    <h3>Ship To: {{order.data.shipping.name}}, {{order.data.shipping.address}}, {{order.data.shipping.city}}</h3>
+    <h4>Date Placed: {{order.data.datePlaced | date: 'MMM dd, yyyy'}}</h4>
+</div>
+<ng-template #noOrder>
+    <h2>Couldn't find order</h2>
 </ng-template>
