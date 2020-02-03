@@ -1,47 +1,47 @@
 <nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top">
-    <a class="navbar-brand" routerLink="/">MyEcommerce</a>
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
-        aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-    </button>
+    <div class="container">
 
-    <div class="collapse navbar-collapse" id="navbarSupportedContent">
-        <ul class="navbar-nav mr-auto">
-            <li class="nav-item active">
-                <a class="nav-link" routerLink="/">Home <span class="sr-only">(current)</span></a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" routerLink="/shopping-cart">
-                    <fa-icon [icon]="['fas', 'shopping-cart']"></fa-icon> Shopping Cart
-                    <span class="badge badge-pill badge-warning"
-                        *ngIf="shoppingCart$ | async as cart">{{cart.totalItemCount }}</span>
-                </a>
-            </li>
+        <a class="navbar-brand" routerLink="/">MyEcommerce</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
 
-
-            <ng-template #notLoggedIn>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav mr-auto">
                 <li class="nav-item">
-                    <a class="nav-link" routerLink="/login">Login</a>
+                    <a class="nav-link" routerLink="/shopping-cart">
+                        <fa-icon [icon]="['fas', 'shopping-cart']"></fa-icon> Shopping Cart
+                        <span class="badge badge-pill badge-warning"
+                            *ngIf="shoppingCart$ | async as cart">{{cart.totalItemCount }}</span>
+                    </a>
                 </li>
-            </ng-template>
+            </ul>
 
-            <li ngbDropdown *ngIf="appUser; else notLoggedIn" class="nav-item dropdown">
-                <a ngbDropdownToggle class="nav-link dropdown-toggle" id="navbarDropdown" role="button"
-                    data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    {{appUser.name}}
-                </a>
-                <div ngbDropdownMenu class="dropdown-menu" aria-labelledby="navbarDropdown">
-                    <!-- <div class="dropdown-divider"></div> -->
-                    <a class="dropdown-item" routerLink="/my/orders">My Orders</a>
-                    <ng-container *ngIf="appUser.isAdmin">
-                        <a class="dropdown-item" routerLink="/admin/orders">Manage Orders</a>
-                        <a class="dropdown-item" routerLink="/admin/products">Manage Products</a>
-                    </ng-container>
-                    <a class="dropdown-item" (click)="logout()">Log Out</a>
-                </div>
-            </li>
+            <ul class="navbar-nav">
+                <ng-template #notLoggedIn>
+                    <li class="nav-item">
+                        <a class="nav-link" routerLink="/login">Login</a>
+                    </li>
+                </ng-template>
+                <li ngbDropdown *ngIf="appUser; else notLoggedIn" class="nav-item dropdown">
+                    <a ngbDropdownToggle class="nav-link dropdown-toggle" id="navbarDropdown" role="button"
+                        data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <fa-icon [icon]="['fas', 'user-circle']"></fa-icon> {{appUser.name}}
+                    </a>
+                    <div ngbDropdownMenu class="dropdown-menu" aria-labelledby="navbarDropdown">
+                        <!-- <div class="dropdown-divider"></div> -->
+                        <a class="dropdown-item" routerLink="/my/orders">My Orders</a>
+                        <ng-container *ngIf="appUser.isAdmin">
+                            <a class="dropdown-item" routerLink="/admin/orders">Manage Orders</a>
+                            <a class="dropdown-item" routerLink="/admin/products">Manage Products</a>
+                        </ng-container>
+                        <a class="dropdown-item" (click)="logout()">Log Out</a>
+                    </div>
+                </li>
+            </ul>
 
-        </ul>
+        </div>
     </div>
 </nav>
 
