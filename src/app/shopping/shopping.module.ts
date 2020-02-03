@@ -28,10 +28,7 @@ import { SharedModule } from 'shared/shared.module';
     ProductFilterComponent
   ],
   imports: [
-    CommonModule,
-    FormsModule,
     SharedModule,
-    AppRoutingModule
   ]
 })
 export class ShoppingModule { }

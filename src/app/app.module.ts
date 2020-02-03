@@ -12,8 +12,8 @@ import { environment } from 'src/environments/environment';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { ShoppingModule } from './shopping/shopping.module';
 import { CoreModule } from './core/core.module';
+import { ShoppingModule } from './shopping/shopping.module';
 
 @NgModule({
   declarations: [
@@ -21,13 +21,7 @@ import { CoreModule } from './core/core.module';
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule,
     AngularFireModule.initializeApp(environment.firebase),
-    AngularFireDatabaseModule,
-    AngularFireAuthModule,
-    FormsModule,
-    NgbModule,
-    CustomFormsModule,
     SharedModule,
     AdminModule,
     ShoppingModule,

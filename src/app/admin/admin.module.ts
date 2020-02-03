@@ -17,9 +17,6 @@ import { SharedModule } from 'shared/shared.module';
     ProductFormComponent,
   ],
   imports: [
-    AppRoutingModule,
-    FormsModule,
-    CommonModule,
     SharedModule,
   ],
   providers: [
