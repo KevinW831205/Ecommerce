@@ -12,9 +12,9 @@
             </li>
             <li class="nav-item">
                 <a class="nav-link" routerLink="/shopping-cart">
-                    Shopping Cart
-                    <span class="badge badge-pill badge-warning" *ngIf="shoppingCart$ | async as cart" >{{cart.totalItemCount }}</span>
-                    <!-- cart.payload.val() -->
+                    <fa-icon [icon]="['fas', 'shopping-cart']"></fa-icon> Shopping Cart
+                    <span class="badge badge-pill badge-warning"
+                        *ngIf="shoppingCart$ | async as cart">{{cart.totalItemCount }}</span>
                 </a>
             </li>
 

@@ -44,7 +44,6 @@ export class AuthService {
   }
 
   demoLogin() {
-    console.log("auth hit")
     this.afAuth.auth.signInWithEmailAndPassword("demouser@demo.com", "demo123")
       .then(r => {
         
