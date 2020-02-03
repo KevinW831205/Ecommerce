@@ -1,5 +1,6 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { CategoryService } from 'shared/services/category.service';
+import { FilterQueryService } from 'shared/services/filter-query.service';
 
 @Component({
   selector: 'app-product-filter',
@@ -9,22 +10,21 @@ import { CategoryService } from 'shared/services/category.service';
 export class ProductFilterComponent implements OnInit {
   categories$;
   @Input('category') category;
-  @Output('change') change = new EventEmitter()
   query: string;
 
-  constructor(private categoryService: CategoryService) {
+  constructor(private categoryService: CategoryService, private filterQuery: FilterQueryService) {
     this.categories$ = categoryService.getAll();
   }
 
   ngOnInit() {
   }
 
-  queryFilter() {
-    this.change.emit({ value: this.query })
-  }
+  // queryFilter() {
+  //   this.change.emit({ value: this.query })
+  // }
 
 }
 
-export interface queryEvent {
-  value: string
-}
+// export interface queryEvent {
+//   value: string
+// }

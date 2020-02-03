@@ -7,7 +7,6 @@ import { switchMap } from 'rxjs/operators';
 import { ShoppingCartService } from 'shared/services/shopping-cart.service';
 import { Subscription, Observable } from 'rxjs';
 import { ShoppingCart } from 'shared/models/ShoppingCart';
-import { queryEvent } from '../product-filter/product-filter.component';
 
 @Component({
   selector: 'app-products',
@@ -18,8 +17,10 @@ export class ProductsComponent implements OnInit {
   products: FirebaseData<Product>[] = [];
   filteredProducts: FirebaseData<Product>[];
   category: string;
+  query: string
   cart$: Observable<ShoppingCart>;
   subscription: Subscription;
+
 
   constructor(private productService: ProductService, private route: ActivatedRoute, private shoppingCartService: ShoppingCartService) { }
 
@@ -28,11 +29,13 @@ export class ProductsComponent implements OnInit {
     this.cart$ = await this.shoppingCartService.getCart();
   }
 
-  queryFilter(query: queryEvent) {
-    this.applyFilter();
-    this.filteredProducts = (query) ?
-      this.filteredProducts.filter(p => p.data.title.toLowerCase().includes(query.value.toLowerCase())) :
-      this.filteredProducts;
+  queryFilter() {
+    if (this.query) {
+      this.applyFilter();
+      this.filteredProducts = (this.query) ?
+        this.filteredProducts.filter(p => p.data.title.toLowerCase().includes(this.query.toLowerCase())) :
+        this.filteredProducts;
+    }
   }
 
   private populateProducts() {
