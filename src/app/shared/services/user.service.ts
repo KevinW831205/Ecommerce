@@ -18,6 +18,14 @@ export class UserService {
     })
   }
 
+  saveAdmin(user: firebase.User){
+    this.db.object('/users/'+user.uid).update({
+      name: user.displayName || "Anonymous Admin",
+      email: user.email,
+      isAdmin: true
+    })
+  }
+
   get(uid: string): AngularFireObject<AppUser> {
     return this.db.object('/users/' + uid);
   }

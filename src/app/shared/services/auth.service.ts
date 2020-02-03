@@ -56,6 +56,10 @@ export class AuthService {
       });
   }
 
+  demoAdmin(){
+    
+  }
+
 
 }
 
