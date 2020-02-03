@@ -3,7 +3,7 @@ import { AngularFireDatabase } from 'angularfire2/database';
 import { Order } from 'shared/models/Order';
 import { ShoppingCartService } from './shopping-cart.service';
 import { BehaviorSubject, Observable } from 'rxjs';
-import { switchMap, map } from 'rxjs/operators';
+import { switchMap, map, tap } from 'rxjs/operators';
 import { FirebaseData } from 'shared/models/FirebaseData';
 
 @Injectable({
@@ -31,7 +31,7 @@ export class OrderService {
     );
   }
 
-  getOrdersByUser(userId: string) {
+  getOrdersByUser(userId: string): Observable<FirebaseData<Order>[]> {
     return this.db.list<Order>('/orders', ref => ref.orderByChild('/userId').equalTo(userId)).snapshotChanges().pipe(
       map(orders => {
         return orders.map(o => {
@@ -41,6 +41,17 @@ export class OrderService {
         })
       })
     );
+  }
+
+  getOrderById(orderId: string): Observable<FirebaseData<Order>> {
+    console.log("order service")
+    return this.db.object('/orders/' + orderId).snapshotChanges().pipe(
+      map(o => {
+        const key = o.key;
+        const data = o.payload.val();
+        return new FirebaseData(key, data);
+      })
+    )
   }
 
   private storeOrder(order: Order) {
