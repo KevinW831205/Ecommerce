@@ -21,7 +21,6 @@ import { SharedModule } from 'shared/shared.module';
     FormsModule,
     CommonModule,
     SharedModule,
-    
   ],
   providers: [
     AdminAuthGuard

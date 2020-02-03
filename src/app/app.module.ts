@@ -12,17 +12,12 @@ import { environment } from 'src/environments/environment';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { HomeComponent } from './core/components/home/home.component';
-import { LoginComponent } from './core/components/login/login.component';
-import { NavbarComponent } from './core/components/navbar/navbar.component';
 import { ShoppingModule } from './shopping/shopping.module';
+import { CoreModule } from './core/core.module';
 
 @NgModule({
   declarations: [
     AppComponent,
-    NavbarComponent,
-    HomeComponent,
-    LoginComponent,
   ],
   imports: [
     BrowserModule,
@@ -35,7 +30,8 @@ import { ShoppingModule } from './shopping/shopping.module';
     CustomFormsModule,
     SharedModule,
     AdminModule,
-    ShoppingModule
+    ShoppingModule,
+    CoreModule
   ],
   providers: [
   ],
