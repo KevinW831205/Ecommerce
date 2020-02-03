@@ -6,7 +6,7 @@ import { AdminOrdersComponent } from './admin/components/admin-orders/admin-orde
 import { AdminProductsComponent } from './admin/components/admin-products/admin-products.component';
 import { ProductFormComponent } from './admin/components/product-form/product-form.component';
 import { AdminAuthGuard } from './admin/services/admin-auth-guard.service';
-import { LoginComponent } from './login/login.component';
+import { LoginComponent } from './core/components/login/login.component';
 import { CheckOutComponent } from './shopping/components/check-out/check-out.component';
 import { MyOrdersComponent } from './shopping/components/my-orders/my-orders.component';
 import { OrderDetailsComponent } from './shopping/components/order-details/order-details.component';
