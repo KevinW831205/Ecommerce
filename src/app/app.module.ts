@@ -9,9 +9,9 @@ import { CustomFormsModule } from 'ng2-validation';
 import { SharedModule } from 'shared/shared.module';
 import { environment } from 'src/environments/environment';
 
-import { AdminOrdersComponent } from './admin/admin-orders/admin-orders.component';
-import { AdminProductsComponent } from './admin/admin-products/admin-products.component';
-import { ProductFormComponent } from './admin/product-form/product-form.component';
+import { AdminOrdersComponent } from './admin/components/admin-orders/admin-orders.component';
+import { AdminProductsComponent } from './admin/components/admin-products/admin-products.component';
+import { ProductFormComponent } from './admin/components/product-form/product-form.component';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { CheckOutFormComponent } from './check-out-form/check-out-form.component';
