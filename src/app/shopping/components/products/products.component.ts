@@ -14,7 +14,7 @@ import { FilterQueryService } from 'shared/services/filter-query.service';
   templateUrl: './products.component.html',
   styleUrls: ['./products.component.css']
 })
-export class ProductsComponent implements OnInit {
+export class ProductsComponent implements OnInit, OnDestroy {
   products: FirebaseData<Product>[] = [];
   filteredProducts: FirebaseData<Product>[];
   category: string;
@@ -34,11 +34,13 @@ export class ProductsComponent implements OnInit {
       this.query = res;
       this.queryFilter();
     })
+  }
 
+  ngOnDestroy(){
+    this.querySubscription.unsubscribe();
   }
 
   queryFilter() {
-
     if (this.query) {
       this.applyFilter();
       this.filteredProducts = (this.query) ?

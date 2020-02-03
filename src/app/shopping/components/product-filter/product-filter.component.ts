@@ -20,7 +20,6 @@ export class ProductFilterComponent implements OnInit {
   }
 
   queryFilter() {
-    console.log(this.query);
     this.filterQuery.setQuery(this.query)
   }
 
