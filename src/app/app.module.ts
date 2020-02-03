@@ -12,34 +12,17 @@ import { environment } from 'src/environments/environment';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { CheckOutFormComponent } from './shopping/components/check-out-form/check-out-form.component';
-import { CheckOutComponent } from './shopping/components/check-out/check-out.component';
 import { HomeComponent } from './home/home.component';
 import { LoginComponent } from './login/login.component';
-import { MyOrdersComponent } from './shopping/components/my-orders/my-orders.component';
 import { NavbarComponent } from './navbar/navbar.component';
-import { OrderDetailsComponent } from './shopping/components/order-details/order-details.component';
-import { OrderSuccessComponent } from './shopping/components/order-success/order-success.component';
-import { ProductFilterComponent } from './shopping/components/product-filter/product-filter.component';
-import { ProductsComponent } from './shopping/components/products/products.component';
-import { ShoppingCartSummaryComponent } from './shopping/components/shopping-cart-summary/shopping-cart-summary.component';
-import { ShoppingCartComponent } from './shopping/components/shopping-cart/shopping-cart.component';
+import { ShoppingModule } from './shopping/shopping.module';
 
 @NgModule({
   declarations: [
     AppComponent,
     NavbarComponent,
     HomeComponent,
-    ProductsComponent,
-    ShoppingCartComponent,
-    CheckOutComponent,
-    OrderSuccessComponent,
-    MyOrdersComponent,
     LoginComponent,
-    ProductFilterComponent,
-    CheckOutFormComponent,
-    ShoppingCartSummaryComponent,
-    OrderDetailsComponent
   ],
   imports: [
     BrowserModule,
@@ -51,7 +34,8 @@ import { ShoppingCartComponent } from './shopping/components/shopping-cart/shopp
     NgbModule,
     CustomFormsModule,
     SharedModule,
-    AdminModule
+    AdminModule,
+    ShoppingModule
   ],
   providers: [
   ],
