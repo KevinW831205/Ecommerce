@@ -7,6 +7,7 @@ import { switchMap } from 'rxjs/operators';
 import { ShoppingCartService } from 'shared/services/shopping-cart.service';
 import { Subscription, Observable } from 'rxjs';
 import { ShoppingCart } from 'shared/models/ShoppingCart';
+import { FilterQueryService } from 'shared/services/filter-query.service';
 
 @Component({
   selector: 'app-products',
@@ -17,19 +18,27 @@ export class ProductsComponent implements OnInit {
   products: FirebaseData<Product>[] = [];
   filteredProducts: FirebaseData<Product>[];
   category: string;
-  query: string
+  query$: Observable<string>;
+  query: string;
   cart$: Observable<ShoppingCart>;
-  subscription: Subscription;
+  querySubscription: Subscription
 
 
-  constructor(private productService: ProductService, private route: ActivatedRoute, private shoppingCartService: ShoppingCartService) { }
+  constructor(private productService: ProductService, private route: ActivatedRoute, private shoppingCartService: ShoppingCartService, private filterQueryService: FilterQueryService) { }
 
   async ngOnInit() {
     this.populateProducts()
     this.cart$ = await this.shoppingCartService.getCart();
+    this.query$ = this.filterQueryService.getQuery();
+    this.querySubscription = this.query$.subscribe(res => {
+      this.query = res;
+      this.queryFilter();
+    })
+
   }
 
   queryFilter() {
+
     if (this.query) {
       this.applyFilter();
       this.filteredProducts = (this.query) ?

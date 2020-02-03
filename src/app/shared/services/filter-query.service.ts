@@ -1,20 +1,22 @@
 import { Injectable } from '@angular/core';
-import { Observable, of } from 'rxjs';
+import { Observable, of, Subject } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
 })
 export class FilterQueryService {
   query$: Observable<string>;
+  private querySubject = new Subject<string>()
 
-
-  constructor() { }
-
-  getQuery(){
-    return this.query$;
+  constructor() {
+    this.query$ = this.querySubject.asObservable();
   }
 
-  setQuery(query: string){
-    this.query$ = of(query);
+  getQuery(){
+    return this.query$
+  }
+
+  setQuery(query: string) {
+    this.querySubject.next(query);
   }
 }

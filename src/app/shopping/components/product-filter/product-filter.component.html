@@ -5,7 +5,7 @@
             <span class="input-group-text" id="basic-addon1">
                 <fa-icon [icon]="['fas', 'search']"></fa-icon>
             </span>
-            <input [(ngModel)]="query" type="text" class="form-control" placeholder="Search...">
+            <input [(ngModel)]="query" type="text" class="form-control" (keyup)="queryFilter()" placeholder="Search...">
         </div>
     </div>
     <ul class="list-group">

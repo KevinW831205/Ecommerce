@@ -19,9 +19,10 @@ export class ProductFilterComponent implements OnInit {
   ngOnInit() {
   }
 
-  // queryFilter() {
-  //   this.change.emit({ value: this.query })
-  // }
+  queryFilter() {
+    console.log(this.query);
+    this.filterQuery.setQuery(this.query)
+  }
 
 }
 
