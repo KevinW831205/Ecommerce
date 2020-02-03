@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { AdminModule } from 'admin/admin.module';
 import { AngularFireModule } from 'angularfire2';
 import { AngularFireAuthModule } from 'angularfire2/auth';
 import { AngularFireDatabaseModule } from 'angularfire2/database';
@@ -9,10 +10,6 @@ import { CustomFormsModule } from 'ng2-validation';
 import { SharedModule } from 'shared/shared.module';
 import { environment } from 'src/environments/environment';
 
-import { AdminOrdersComponent } from './admin/components/admin-orders/admin-orders.component';
-import { AdminProductsComponent } from './admin/components/admin-products/admin-products.component';
-import { ProductFormComponent } from './admin/components/product-form/product-form.component';
-import { AdminAuthGuard } from './admin/services/admin-auth-guard.service';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { CheckOutFormComponent } from './check-out-form/check-out-form.component';
@@ -38,10 +35,7 @@ import { ShoppingCartComponent } from './shopping-cart/shopping-cart.component';
     CheckOutComponent,
     OrderSuccessComponent,
     MyOrdersComponent,
-    AdminProductsComponent,
-    AdminOrdersComponent,
     LoginComponent,
-    ProductFormComponent,
     ProductFilterComponent,
     CheckOutFormComponent,
     ShoppingCartSummaryComponent,
@@ -56,10 +50,10 @@ import { ShoppingCartComponent } from './shopping-cart/shopping-cart.component';
     FormsModule,
     NgbModule,
     CustomFormsModule,
-    SharedModule
+    SharedModule,
+    AdminModule
   ],
   providers: [
-    AdminAuthGuard,
   ],
   bootstrap: [AppComponent]
 })
