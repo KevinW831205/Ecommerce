@@ -2,11 +2,8 @@
     <div class="container">
 
         <a class="navbar-brand" routerLink="/">MyEcommerce</a>
-        <button 
-            class="navbar-toggler" type="button" 
-            data-toggle="collapse" data-target="#navbarSupportedContent"
-            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation" 
-            (click)="isMenuCollapsed = !isMenuCollapsed">
+        <button class="navbar-toggler" type="button" aria-controls="navbarSupportedContent" aria-expanded="false"
+            aria-label="Toggle navigation" (click)="isMenuCollapsed = !isMenuCollapsed">
             <span class="navbar-toggler-icon"></span>
         </button>
 
@@ -36,8 +33,10 @@
                         <!-- <div class="dropdown-divider"></div> -->
                         <a class="dropdown-item" routerLink="/my/orders" (click)="isMenuCollapsed = true">My Orders</a>
                         <ng-container *ngIf="appUser.isAdmin">
-                            <a class="dropdown-item" routerLink="/admin/orders" (click)="isMenuCollapsed = true">Manage Orders</a>
-                            <a class="dropdown-item" routerLink="/admin/products" (click)="isMenuCollapsed = true">Manage Products</a>
+                            <a class="dropdown-item" routerLink="/admin/orders" (click)="isMenuCollapsed = true">Manage
+                                Orders</a>
+                            <a class="dropdown-item" routerLink="/admin/products"
+                                (click)="isMenuCollapsed = true">Manage Products</a>
                         </ng-container>
                         <a class="dropdown-item" (click)="logout()">Log Out</a>
                     </div>

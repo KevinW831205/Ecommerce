@@ -17,6 +17,10 @@ export class ProductFilterComponent implements OnInit {
   ngOnInit() {
   }
 
+  filter(query){
+
+  }
+
 
 
 }

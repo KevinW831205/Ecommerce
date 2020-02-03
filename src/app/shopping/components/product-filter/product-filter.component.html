@@ -1,4 +1,10 @@
 <div class="sticky-top">
+    <div>
+        <p>
+            <fa-icon [icon]="['fas', 'search']"></fa-icon>
+            <input #query (keyup)="filter(query.value)" type="text" class="form-control" placeholder="Search...">
+        </p>
+    </div>
     <ul class="list-group">
         <a class="list-group-item list-group-item-action" [class.active]="!category" routerLink="/products">All
             Categories</a>
