@@ -23,4 +23,8 @@ export class LoginComponent {
     this.auth.demoLogin();
   }
 
+  demoAdmin(){
+    this.auth.demoAdmin();
+  }
+
 }
