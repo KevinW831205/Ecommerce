@@ -12,6 +12,7 @@ import { environment } from 'src/environments/environment';
 import { AdminOrdersComponent } from './admin/components/admin-orders/admin-orders.component';
 import { AdminProductsComponent } from './admin/components/admin-products/admin-products.component';
 import { ProductFormComponent } from './admin/components/product-form/product-form.component';
+import { AdminAuthGuard } from './admin/services/admin-auth-guard.service';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { CheckOutFormComponent } from './check-out-form/check-out-form.component';
@@ -24,7 +25,6 @@ import { OrderDetailsComponent } from './order-details/order-details.component';
 import { OrderSuccessComponent } from './order-success/order-success.component';
 import { ProductFilterComponent } from './product-filter/product-filter.component';
 import { ProductsComponent } from './products/products.component';
-import { AdminAuthGuard } from './service/admin-auth-guard.service';
 import { ShoppingCartSummaryComponent } from './shopping-cart-summary/shopping-cart-summary.component';
 import { ShoppingCartComponent } from './shopping-cart/shopping-cart.component';
 

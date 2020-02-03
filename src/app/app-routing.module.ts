@@ -10,7 +10,7 @@ import { AdminOrdersComponent } from './admin/components/admin-orders/admin-orde
 import { AdminProductsComponent } from './admin/components/admin-products/admin-products.component';
 import { MyOrdersComponent } from './my-orders/my-orders.component';
 import { AuthGuard } from 'shared/services/auth-guard.service';
-import { AdminAuthGuard } from './service/admin-auth-guard.service';
+import { AdminAuthGuard } from './admin/services/admin-auth-guard.service';
 import { ProductFormComponent } from './admin/components/product-form/product-form.component';
 import { AuthService } from 'shared/services/auth.service';
 import { OrderDetailsComponent } from './order-details/order-details.component';
