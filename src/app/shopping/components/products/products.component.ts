@@ -31,13 +31,16 @@ export class ProductsComponent implements OnInit, OnDestroy {
     this.cart$ = await this.shoppingCartService.getCart();
     this.query$ = this.filterQueryService.getQuery();
     this.querySubscription = this.query$.subscribe(res => {
+      console.log(res);
       this.query = res;
       this.queryFilter();
     })
   }
 
   ngOnDestroy(){
-    this.querySubscription.unsubscribe();
+    if (this.querySubscription) {
+      this.querySubscription.unsubscribe();
+    }
   }
 
   queryFilter() {
